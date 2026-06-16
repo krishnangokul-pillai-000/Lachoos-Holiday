@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Bus, Smartphone, Home, MapPin, ArrowRight, Phone } from 'lucide-react';
 import './Sabarimala.css';
@@ -28,6 +28,23 @@ const steps = [
 
 const Sabarimala = () => {
   const [form, setForm] = useState({ name: '', phone: '', date: '', count: '', notes: '' });
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.currentTime = 1;
+    
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= 4) {
+        video.pause();
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,12 +57,22 @@ const Sabarimala = () => {
       {/* Hero */}
       <section className="sb-hero">
         <motion.div
-          className="sb-hero-bg"
+          className="sb-hero-video-wrapper"
           initial={{ scale: 1.08 }}
           animate={{ scale: 1 }}
           transition={{ duration: 12, ease: "easeOut" }}
-          style={{ backgroundImage: `url('/images/packages/sabarimala-main.jpg')` }}
-        />
+        >
+          <video
+            ref={videoRef}
+            className="sb-hero-video"
+            autoPlay
+            muted
+            playsInline
+            poster="/images/packages/sabarimala-main.jpg"
+          >
+            <source src="/videos/Sabarimala_pilgrimage_animation_…_202606151528.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
         <div className="sb-hero-overlay" />
         <div className="container sb-hero-content">
           <motion.div

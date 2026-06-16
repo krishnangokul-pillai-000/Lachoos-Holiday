@@ -3,12 +3,12 @@ import { MapPin, Calendar, Users, ArrowRight, Search, ShieldCheck } from 'lucide
 import { motion, useScroll, useSpring } from 'framer-motion';
 import './Hero.css';
 
-const heroImg = "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=2000&q=80";
+const heroImg = "/images/packages/lachoos-home-cover.png";
 
 const titleLines = [
-  ['Where', 'Emerald'],
-  ['Waters', 'Meet'],
-  ['the', 'Malabar', 'Sun'],
+  ['Where', 'every', 'turn'],
+  ['leads', 'to', 'a'],
+  ['different', 'shade', 'of', 'green'],
 ];
 
 const marqueeWords = [
@@ -81,7 +81,7 @@ const Hero = () => {
       <motion.div
         className="hero-bg"
         style={{ backgroundImage: `url(${heroImg})` }}
-        initial={{ scale: 1.18, x: '-1.5%' }}
+        initial={{ scale: 1, x: '-1.5%' }}
         animate={{ scale: 1, x: '0%' }}
         transition={{ duration: 18, ease: [0.22, 1, 0.36, 1] }}
       />
@@ -100,7 +100,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Title — word-by-word reveal */}
-        <h1 className="hero-title" aria-label="Where Emerald Waters Meet the Malabar Sun">
+        <h1 className="hero-title" aria-label="Where every turn leads to a different shade of green">
           {titleLines.map((line, li) => (
             <span key={li} className="hero-title-line">
               {line.map((word) => {
@@ -150,61 +150,61 @@ const Hero = () => {
           variants={fadeUp}
         >
           <form onSubmit={handleSearch} className="search-bar">
-          <span className="search-bar-rule" aria-hidden="true" />
+            <span className="search-bar-rule" aria-hidden="true" />
 
-          <div className="search-field relative">
-            <MapPin className="search-icon" size={18} />
-            <div className="search-text">
-              <span className="search-label">DESTINATION</span>
-              <input
-                type="text" placeholder="Where to?"
-                className="search-input"
-                value={destination}
-                onChange={(e) => { setDestination(e.target.value); setShowSuggestions(true); }}
-                onFocus={() => setShowSuggestions(true)}
-                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-              />
-              {showSuggestions && destination && filteredLocations.length > 0 && (
-                <ul className="suggestions-list">
-                  {filteredLocations.map((loc, i) => (
-                    <li key={i} onClick={() => { setDestination(loc); setShowSuggestions(false); }}>{loc}</li>
-                  ))}
-                </ul>
-              )}
+            <div className="search-field relative">
+              <MapPin className="search-icon" size={18} />
+              <div className="search-text">
+                <span className="search-label">DESTINATION</span>
+                <input
+                  type="text" placeholder="Where to?"
+                  className="search-input"
+                  value={destination}
+                  onChange={(e) => { setDestination(e.target.value); setShowSuggestions(true); }}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                />
+                {showSuggestions && destination && filteredLocations.length > 0 && (
+                  <ul className="suggestions-list">
+                    {filteredLocations.map((loc, i) => (
+                      <li key={i} onClick={() => { setDestination(loc); setShowSuggestions(false); }}>{loc}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="search-field">
-            <Calendar className="search-icon" size={18} />
-            <div className="search-text">
-              <span className="search-label">DURATION</span>
-              <select className="search-select" value={duration} onChange={(e) => setDuration(e.target.value)}>
-                <option>2 - 3 Days</option>
-                <option>3 - 5 Days</option>
-                <option>5 - 7 Days</option>
-                <option>7+ Days</option>
-              </select>
+            <div className="search-field">
+              <Calendar className="search-icon" size={18} />
+              <div className="search-text">
+                <span className="search-label">DURATION</span>
+                <select className="search-select" value={duration} onChange={(e) => setDuration(e.target.value)}>
+                  <option>2 - 3 Days</option>
+                  <option>3 - 5 Days</option>
+                  <option>5 - 7 Days</option>
+                  <option>7+ Days</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div className="search-field">
-            <Users className="search-icon" size={18} />
-            <div className="search-text">
-              <span className="search-label">TRAVELERS</span>
-              <select className="search-select" value={travelers} onChange={(e) => setTravelers(e.target.value)}>
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>Family (3-5)</option>
-                <option>Group (5+)</option>
-              </select>
+            <div className="search-field">
+              <Users className="search-icon" size={18} />
+              <div className="search-text">
+                <span className="search-label">TRAVELERS</span>
+                <select className="search-select" value={travelers} onChange={(e) => setTravelers(e.target.value)}>
+                  <option>1 Adult</option>
+                  <option>2 Adults</option>
+                  <option>Family (3-5)</option>
+                  <option>Group (5+)</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <button type="submit" className="search-btn">
-            <Search size={16} className="search-btn-icon" />
-            <span>SEARCH<br/>PACKAGES</span>
-            <ArrowRight size={14} className="search-btn-arrow" />
-          </button>
+            <button type="submit" className="search-btn">
+              <Search size={16} className="search-btn-icon" />
+              <span>SEARCH<br />PACKAGES</span>
+              <ArrowRight size={14} className="search-btn-arrow" />
+            </button>
           </form>
         </motion.div>
 
