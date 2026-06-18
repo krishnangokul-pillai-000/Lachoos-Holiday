@@ -93,7 +93,7 @@ const destinations = [
     title: 'Munnar Tea Estates',
     tag: 'HILL STATION',
     desc: 'Exclusive stays in sprawling emerald hills in the heart of Kerala high ranges.',
-    img: '/images/packages/munnar-1.jpg',
+    img: '/images/packages/munnarTeaEstate-2.jpg',
     size: 'side',
     location: 'Idukki, Kerala'
   },
@@ -101,7 +101,7 @@ const destinations = [
     title: 'Wayanad Wilderness',
     tag: 'ECO-LUXURY',
     desc: 'Rediscover silence in curated luxury jungle lodges where nature meets bespoke comfort.',
-    img: '/images/packages/wayanad-1.jpg',
+    img: '/images/packages/wayanad-3.jpg',
     size: 'wide',
     location: 'Wayanad, Kerala'
   },
